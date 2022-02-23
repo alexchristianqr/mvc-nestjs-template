@@ -1,12 +1,4 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Post,
-  Put,
-} from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { ExampleService } from '../services/example.service';
 import { CustomExampleDto } from '../dto/custom-example.dto';
 
@@ -31,10 +23,7 @@ export class ExampleController {
   }
 
   @Put(':id')
-  async updateExample(
-    @Param() { id },
-    @Body() payload: CustomExampleDto,
-  ): Promise<any> {
+  async updateExample(@Param() { id }, @Body() payload: CustomExampleDto): Promise<any> {
     console.log({ id, payload });
     return await this.exampleService.updateExample(id, payload);
   }

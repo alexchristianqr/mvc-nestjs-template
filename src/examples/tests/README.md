@@ -16,13 +16,7 @@ describe('ExampleController', () => {
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
-      imports: [
-        ConfigModule.forRoot(),
-        MongooseModule.forRoot(process.env.DB_MONGODB_CONNECTION),
-        MongooseModule.forFeature([
-          { name: 'ExampleSchema', schema: ExampleSchema },
-        ]),
-      ],
+      imports: [ConfigModule.forRoot(), MongooseModule.forRoot(process.env.DB_MONGODB_CONNECTION), MongooseModule.forFeature([{ name: 'ExampleSchema', schema: ExampleSchema }])],
       controllers: [ExampleController],
       providers: [ExampleService],
     }).compile();
@@ -88,5 +82,4 @@ describe('ExampleController', () => {
     });
   });
 });
-
 ```

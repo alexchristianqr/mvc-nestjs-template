@@ -5,11 +5,7 @@ import { ExampleService } from '../services/example.service';
 import { ExampleSchema } from '../schemas/example.schema';
 
 @Module({
-  imports: [
-    MongooseModule.forFeature([
-      { name: 'ExampleSchema', schema: ExampleSchema },
-    ]),
-  ],
+  imports: [MongooseModule.forFeature([{ name: 'ExampleSchema', schema: ExampleSchema }])],
   controllers: [ExampleController],
   providers: [ExampleService],
 })

@@ -10,9 +10,7 @@ import { ExampleInterface } from '../interfaces/example.interface';
 
 @Injectable()
 export class ExampleService {
-  constructor(
-    @InjectModel('Example') private exampleModel: Model<ExampleInterface>,
-  ) {}
+  constructor(@InjectModel('Example') private exampleModel: Model<ExampleInterface>) {}
 
   async getExamples() {
     return await this.exampleModel.find();
