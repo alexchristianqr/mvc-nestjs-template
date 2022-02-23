@@ -6,18 +6,18 @@ export class HelperService {
    * @param response
    * @return {Promise<*>}
    */
-  response(req, res, response) {
+  response({ req, res }, response) {
     // Request
     let statusCodeHttp = null;
 
     // Payload response
     const payload = {
-      success: null,
+      code: null,
+      success: false,
       message: null,
       result: null,
       method: response.method,
       createdAt: new Date(),
-      code: null,
     };
 
     // Try

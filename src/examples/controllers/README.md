@@ -13,65 +13,90 @@ export class ExampleController {
 
   @Get()
   async getExamples(@Req() req, @Res() res): Promise<any> {
-    // Request
-    const {} = req.params;
-    const {} = req.body;
-    const {} = req.query;
+    const method = '[ExampleController.getExamples]';
+    try {
+      // Request
+      const {} = req.params;
+      const {} = req.body;
+      const {} = req.query;
 
-    // Service
-    const response = await this.exampleService.getExamples();
+      // Service
+      const response = await this.exampleService.getExamples();
 
-    // Response
-    return this.helperService.response(req, res, response);
+      // Response
+      return this.helperService.response({ req, res }, { method, ...response });
+    } catch (e) {
+      return this.helperService.response({ req, res }, { method, e });
+    }
   }
 
   @Get(':id')
   async getExampleById(@Req() req, @Res() res): Promise<any> {
-    // Request
-    const exampleId = req.params.id;
+    const method = '[ExampleController.getExampleById]';
+    try {
+      // Request
+      const exampleId = req.params.id;
 
-    // Service
-    const response = await this.exampleService.getExampleById(exampleId);
+      // Service
+      const response = await this.exampleService.getExampleById(exampleId);
 
-    // Response
-    return this.helperService.response(req, res, response);
+      // Response
+      return this.helperService.response({ req, res }, { method, ...response });
+    } catch (e) {
+      return this.helperService.response({ req, res }, { method, e });
+    }
   }
 
   @Post()
   async createExample(@Req() req, @Res() res): Promise<any> {
-    // Request
-    const paylaod = req.body;
+    const method = '[ExampleController.createExample]';
+    try {
+      // Request
+      const paylaod = req.body;
 
-    // Service
-    const response = await this.exampleService.createExample(paylaod);
+      // Service
+      const response = await this.exampleService.createExample(paylaod);
 
-    // Response
-    return this.helperService.response(req, res, response);
+      // Response
+      return this.helperService.response({ req, res }, { method, ...response });
+    } catch (e) {
+      return this.helperService.response({ req, res }, { method, e });
+    }
   }
 
   @Put(':id')
   async updateExample(@Req() req, @Res() res): Promise<any> {
-    // Request
-    const exampleId = req.params.id;
-    const payload = req.body;
+    const method = '[ExampleController.updateExample]';
+    try {
+      // Request
+      const exampleId = req.params.id;
+      const payload = req.body;
 
-    // Service
-    const response = await this.exampleService.updateExample(exampleId, payload);
+      // Service
+      const response = await this.exampleService.updateExample(exampleId, payload);
 
-    // Response
-    return this.helperService.response(req, res, response);
+      // Response
+      return this.helperService.response({ req, res }, { method, ...response });
+    } catch (e) {
+      return this.helperService.response({ req, res }, { method, e });
+    }
   }
 
   @Delete(':id')
   async deleteExample(@Req() req, @Res() res): Promise<any> {
-    // Request
-    const exampleId = req.params.id;
+    const method = '[ExampleController.deleteExample]';
+    try {
+      // Request
+      const exampleId = req.params.id;
 
-    // Service
-    const response = await this.exampleService.deleteExample(exampleId);
+      // Service
+      const response = await this.exampleService.deleteExample(exampleId);
 
-    // Response
-    return this.helperService.response(req, res, response);
+      // Response
+      return this.helperService.response({ req, res }, { method, ...response });
+    } catch (e) {
+      return this.helperService.response({ req, res }, { method, e });
+    }
   }
 }
 ```
