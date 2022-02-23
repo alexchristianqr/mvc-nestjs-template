@@ -24,9 +24,9 @@ export class ExampleController {
       const response = await this.exampleService.getExamples();
 
       // Response
-      return this.helperService.response({ req, res }, { method, ...response });
+      return HelperService.response({ req, res }, { method, ...response });
     } catch (e) {
-      return this.helperService.response({ req, res }, { method, e });
+      return HelperService.response({ req, res }, { method, e });
     }
   }
 
@@ -41,9 +41,9 @@ export class ExampleController {
       const response = await this.exampleService.getExampleById(exampleId);
 
       // Response
-      return this.helperService.response({ req, res }, { method, ...response });
+      return HelperService.response({ req, res }, { method, ...response });
     } catch (e) {
-      return this.helperService.response({ req, res }, { method, e });
+      return HelperService.response({ req, res }, { method, e });
     }
   }
 
@@ -58,9 +58,9 @@ export class ExampleController {
       const response = await this.exampleService.createExample(paylaod);
 
       // Response
-      return this.helperService.response({ req, res }, { method, ...response });
+      return HelperService.response({ req, res }, { method, ...response });
     } catch (e) {
-      return this.helperService.response({ req, res }, { method, e });
+      return HelperService.response({ req, res }, { method, e });
     }
   }
 
@@ -76,9 +76,9 @@ export class ExampleController {
       const response = await this.exampleService.updateExample(exampleId, payload);
 
       // Response
-      return this.helperService.response({ req, res }, { method, ...response });
+      return HelperService.response({ req, res }, { method, ...response });
     } catch (e) {
-      return this.helperService.response({ req, res }, { method, e });
+      return HelperService.response({ req, res }, { method, e });
     }
   }
 
@@ -93,9 +93,9 @@ export class ExampleController {
       const response = await this.exampleService.deleteExample(exampleId);
 
       // Response
-      return this.helperService.response({ req, res }, { method, ...response });
+      return HelperService.response({ req, res }, { method, ...response });
     } catch (e) {
-      return this.helperService.response({ req, res }, { method, e });
+      return HelperService.response({ req, res }, { method, e });
     }
   }
 }

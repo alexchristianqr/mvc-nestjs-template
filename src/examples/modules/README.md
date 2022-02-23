@@ -16,5 +16,4 @@ import { HelperService } from '../../utils/helper.service';
   providers: [ExampleService, HelperService],
 })
 export class ExampleModule {}
-
 ```

@@ -7,15 +7,14 @@ import { ConfigModule } from '@nestjs/config';
 
 describe('ExampleController', () => {
   // Set
-  let appController: ExampleController;
+  let exampleService: ExampleService;
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
       imports: [ConfigModule.forRoot(), MongooseModule.forRoot(process.env.DB_MONGODB_CONNECTION), MongooseModule.forFeature([{ name: 'ExampleSchema', schema: ExampleSchema }])],
-      controllers: [ExampleController],
       providers: [ExampleService],
     }).compile();
-    appController = app.get<ExampleController>(ExampleController);
+    exampleService = app.get<ExampleService>(ExampleService);
   });
 
   describe('root', () => {
@@ -26,7 +25,7 @@ describe('ExampleController', () => {
      * Test #1
      */
     it('getExamples', async () => {
-      const response = await appController.getExamples();
+      const response = await exampleService.getExamples();
       expect.arrayContaining(response);
     });
 
@@ -35,7 +34,7 @@ describe('ExampleController', () => {
      */
     it('getExampleById', async () => {
       let id = '6215b6ffb80fc686913258a0';
-      const response = await appController.getExampleById({ id });
+      const response = await exampleService.getExampleById({ id });
       expect.objectContaining(response);
     });
 
@@ -47,7 +46,7 @@ describe('ExampleController', () => {
         title: 'Title #1',
         description: 'single description',
       };
-      const response = await appController.createExample(payload);
+      const response = await exampleService.createExample(payload);
       exampleId = response._id;
       expect.objectContaining(response);
     });
@@ -62,7 +61,7 @@ describe('ExampleController', () => {
         title: 'Title #5',
         description: 'single description',
       };
-      const response = await appController.updateExample({ id }, payload);
+      const response = await exampleService.updateExample({ id }, payload);
       expect.objectContaining(response);
     });
 
@@ -72,7 +71,7 @@ describe('ExampleController', () => {
     it('deleteExample', async () => {
       console.log({ exampleId });
       let id = exampleId.toString();
-      const response = await appController.deleteExample({ id });
+      const response = await exampleService.deleteExample({ id });
       expect.objectContaining(response);
     });
   });
