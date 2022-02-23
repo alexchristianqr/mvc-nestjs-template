@@ -1,4 +1,4 @@
-# `/modules`
+# `/schemas`
 
 example.schema.ts
 
