@@ -1,36 +1,71 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Controller, Delete, Get, Post, Put, Req, Res } from '@nestjs/common';
 import { ExampleService } from '../services/example.service';
-import { CustomExampleDto } from '../dto/custom-example.dto';
+import { HelperService } from '../../utils/helper.service';
 
 @Controller('examples')
 export class ExampleController {
-  constructor(private readonly exampleService: ExampleService) {}
+  constructor(private readonly exampleService: ExampleService, private readonly helperService: HelperService) {}
 
   @Get()
-  async getExamples(): Promise<any> {
-    return await this.exampleService.getExamples();
+  async getExamples(@Req() req, @Res() res): Promise<any> {
+    // Request
+    const {} = req.params;
+    const {} = req.body;
+    const {} = req.query;
+
+    // Service
+    const response = await this.exampleService.getExamples();
+
+    // Response
+    return this.helperService.response(req, res, response);
   }
 
   @Get(':id')
-  async getExampleById(@Param() { id }): Promise<any> {
-    return await this.exampleService.getExampleById(id);
+  async getExampleById(@Req() req, @Res() res): Promise<any> {
+    // Request
+    const exampleId = req.params.id;
+
+    // Service
+    const response = await this.exampleService.getExampleById(exampleId);
+
+    // Response
+    return this.helperService.response(req, res, response);
   }
 
   @Post()
-  async createExample(@Body() payload: CustomExampleDto): Promise<any> {
-    console.log({ payload });
-    return await this.exampleService.createExample(payload);
+  async createExample(@Req() req, @Res() res): Promise<any> {
+    // Request
+    const paylaod = req.body;
+
+    // Service
+    const response = await this.exampleService.createExample(paylaod);
+
+    // Response
+    return this.helperService.response(req, res, response);
   }
 
   @Put(':id')
-  async updateExample(@Param() { id }, @Body() payload: CustomExampleDto): Promise<any> {
-    console.log({ id, payload });
-    return await this.exampleService.updateExample(id, payload);
+  async updateExample(@Req() req, @Res() res): Promise<any> {
+    // Request
+    const exampleId = req.params.id;
+    const payload = req.body;
+
+    // Service
+    const response = await this.exampleService.updateExample(exampleId, payload);
+
+    // Response
+    return this.helperService.response(req, res, response);
   }
 
   @Delete(':id')
-  async deleteExample(@Param() { id }): Promise<any> {
-    console.log({ id });
-    return await this.exampleService.deleteExample(id);
+  async deleteExample(@Req() req, @Res() res): Promise<any> {
+    // Request
+    const exampleId = req.params.id;
+
+    // Service
+    const response = await this.exampleService.deleteExample(exampleId);
+
+    // Response
+    return this.helperService.response(req, res, response);
   }
 }
