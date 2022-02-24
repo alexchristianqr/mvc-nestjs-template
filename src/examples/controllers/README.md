@@ -9,10 +9,10 @@ import { HelperService } from '../../utils/helper.service';
 
 @Controller('examples')
 export class ExampleController {
-  constructor(private readonly exampleService: ExampleService, private readonly helperService: HelperService) {}
+  constructor(private readonly exampleService: ExampleService) {}
 
   @Get()
-  async getExamples(@Req() req, @Res() res): Promise<any> {
+  async getExamples(@Req() req, @Res() res) {
     const method = '[ExampleController.getExamples]';
     try {
       // Request
@@ -31,7 +31,7 @@ export class ExampleController {
   }
 
   @Get(':id')
-  async getExampleById(@Req() req, @Res() res): Promise<any> {
+  async getExampleById(@Req() req, @Res() res) {
     const method = '[ExampleController.getExampleById]';
     try {
       // Request
@@ -48,7 +48,7 @@ export class ExampleController {
   }
 
   @Post()
-  async createExample(@Req() req, @Res() res): Promise<any> {
+  async createExample(@Req() req, @Res() res) {
     const method = '[ExampleController.createExample]';
     try {
       // Request
@@ -65,7 +65,7 @@ export class ExampleController {
   }
 
   @Put(':id')
-  async updateExample(@Req() req, @Res() res): Promise<any> {
+  async updateExample(@Req() req, @Res() res) {
     const method = '[ExampleController.updateExample]';
     try {
       // Request
@@ -83,7 +83,7 @@ export class ExampleController {
   }
 
   @Delete(':id')
-  async deleteExample(@Req() req, @Res() res): Promise<any> {
+  async deleteExample(@Req() req, @Res() res) {
     const method = '[ExampleController.deleteExample]';
     try {
       // Request

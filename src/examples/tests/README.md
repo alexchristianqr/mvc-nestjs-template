@@ -1,22 +1,25 @@
 # `/tests`
 
-example.controller.spec.ts
+example.service.spec.ts
 
 ```typescript
 import { Test, TestingModule } from '@nestjs/testing';
-import { ExampleController } from '../controllers/example.controller';
-import { ExampleService } from '../services/example.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { ExampleSchema } from '../schemas/example.schema';
 import { ConfigModule } from '@nestjs/config';
+import { ExampleService } from '../services/example.service';
+import { ExampleSchema } from '../schemas/example.schema';
 
-describe('ExampleController', () => {
+describe('ExampleService', () => {
   // Set
   let exampleService: ExampleService;
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
-      imports: [ConfigModule.forRoot(), MongooseModule.forRoot(process.env.DB_MONGODB_CONNECTION), MongooseModule.forFeature([{ name: 'ExampleSchema', schema: ExampleSchema }])],
+      imports: [
+        ConfigModule.forRoot(),
+        MongooseModule.forRoot(process.env.DB_MONGODB_CONNECTION),
+        MongooseModule.forFeature([{ name: 'ExampleSchema', schema: ExampleSchema }]),
+      ],
       providers: [ExampleService],
     }).compile();
     exampleService = app.get<ExampleService>(ExampleService);
@@ -60,7 +63,6 @@ describe('ExampleController', () => {
      * Test #4
      */
     it('updateExample', async () => {
-      console.log({ exampleId });
       let id = exampleId.toString();
       let payload = {
         title: 'Title #5',
@@ -74,11 +76,11 @@ describe('ExampleController', () => {
      * Test #5
      */
     it('deleteExample', async () => {
-      console.log({ exampleId });
       let id = exampleId.toString();
       const response = await exampleService.deleteExample({ id });
       expect.objectContaining(response);
     });
   });
 });
+
 ```

@@ -100,12 +100,12 @@ export class HelperService {
 
     // Print log success = TRUE
     if (payload['success']) {
-      console.log('[Helper.response]', payload);
+      console.log('[HelperService.response]', payload);
     }
 
     // Print log success = FALSE
     if (!payload['success']) {
-      console.error('[Helper.response]', payload);
+      console.error('[HelperService.response]', payload);
     }
 
     // Return response express
@@ -122,7 +122,14 @@ export class HelperService {
    * @param sort
    * @returns {Promise<*>}
    */
-  static async getModel({ model = null, modelQuery = null, paginate = null, joins = null, fields = null, sort = false }) {
+  static async getModel({
+    model = null,
+    modelQuery = null,
+    paginate = null,
+    joins = null,
+    fields = null,
+    sort = false,
+  }) {
     console.log('[HelperService.getModel]');
 
     let result = null;
