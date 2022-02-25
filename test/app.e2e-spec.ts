@@ -27,7 +27,7 @@ describe('ExampleController (e2e)', () => {
     // API
     const response = await request.get(url);
 
-    // Test
+    // Tests
     expect(response.status).toBe(200);
     expect(response.body.code).toEqual(expect.any(Number));
     expect(response.body.success).toEqual(expect.any(Boolean));
@@ -44,7 +44,7 @@ describe('ExampleController (e2e)', () => {
     // API
     const response = await request.post(url);
 
-    // Test
+    // Tests
     expect(response.status).toBe(200);
     expect(response.body.code).toEqual(expect.any(Number));
     expect(response.body.success).toEqual(expect.any(Boolean));
@@ -63,7 +63,7 @@ describe('ExampleController (e2e)', () => {
     // API
     const response = await request.put(url, payload);
 
-    // Test
+    // Tests
     expect(response.status).toBe(200);
     expect(response.body.code).toEqual(expect.any(Number));
     expect(response.body.success).toEqual(expect.any(Boolean));
@@ -80,7 +80,7 @@ describe('ExampleController (e2e)', () => {
     // API
     const response = await request.delete(url);
 
-    // Test
+    // Tests
     expect(response.status).toBe(200);
     expect(response.body.code).toEqual(expect.any(Number));
     expect(response.body.success).toEqual(expect.any(Boolean));

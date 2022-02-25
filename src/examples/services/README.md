@@ -10,7 +10,11 @@ import { ExampleInterface } from '../interfaces/example.interface';
 
 @Injectable()
 export class ExampleService {
-  constructor(@InjectModel('ExampleSchema') private exampleModel: Model<ExampleInterface>) {}
+  private readonly exampleModel;
+
+  constructor(@InjectModel('ExampleSchema') exampleModel: Model<ExampleInterface>) {
+    this.exampleModel = exampleModel;
+  }
 
   async getExamples(): Promise<any> {
     const result = await this.exampleModel.find();
@@ -22,7 +26,7 @@ export class ExampleService {
     };
   }
 
-  async getExampleById(id): Promise<any> {
+  async getExampleById(id: string): Promise<any> {
     const result = await this.exampleModel.findOne({
       _id: id,
     });
@@ -34,7 +38,7 @@ export class ExampleService {
     };
   }
 
-  async createExample(payload): Promise<any> {
+  async createExample(payload: object): Promise<any> {
     const result = await this.exampleModel.create(payload);
 
     // Response
@@ -44,7 +48,7 @@ export class ExampleService {
     };
   }
 
-  async updateExample(id, payload): Promise<any> {
+  async updateExample(id: string, payload: object): Promise<any> {
     const result = await this.exampleModel.updateOne(
       {
         _id: id,
@@ -61,7 +65,7 @@ export class ExampleService {
     };
   }
 
-  async deleteExample(id): Promise<any> {
+  async deleteExample(id: string): Promise<any> {
     const result = await this.exampleModel.deleteOne({
       _id: id,
     });

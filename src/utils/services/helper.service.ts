@@ -1,3 +1,14 @@
+import { Model } from 'mongoose';
+
+type myschema = {
+  model: Model<any>;
+  modelQuery: object;
+  paginate: { perPage: string; page: string };
+  joins: string[];
+  fields: string[];
+  sort: boolean;
+};
+
 export class HelperService {
   /**
    * Respuesta mixta express
@@ -6,7 +17,7 @@ export class HelperService {
    * @param response
    * @return {Promise<*>}
    */
-  static response({ req, res }, response) {
+  static response({ req, res }, response): any {
     // Request
     let statusCodeHttp = null;
 
@@ -122,14 +133,7 @@ export class HelperService {
    * @param sort
    * @returns {Promise<*>}
    */
-  static async getModel({
-    model = null,
-    modelQuery = null,
-    paginate = null,
-    joins = null,
-    fields = null,
-    sort = false,
-  }) {
+  static async getModel({ model, modelQuery, paginate, joins, fields, sort }: myschema): Promise<any> {
     console.log('[HelperService.getModel]');
 
     let result = null;

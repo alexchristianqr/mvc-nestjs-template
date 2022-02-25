@@ -5,14 +5,18 @@ example.controller.ts
 ```typescript
 import { Controller, Delete, Get, Post, Put, Req, Res } from '@nestjs/common';
 import { ExampleService } from '../services/example.service';
-import { HelperService } from '../../utils/helper.service';
+import { HelperService } from '../../utils/services/helper.service';
 
 @Controller('examples')
 export class ExampleController {
-  constructor(private readonly exampleService: ExampleService) {}
+  private readonly exampleService;
+
+  constructor(exampleService: ExampleService) {
+    this.exampleService = exampleService;
+  }
 
   @Get()
-  async getExamples(@Req() req, @Res() res) {
+  async getExamples(@Req() req: any, @Res() res: any): Promise<any> {
     const method = '[ExampleController.getExamples]';
     try {
       // Request
@@ -31,7 +35,7 @@ export class ExampleController {
   }
 
   @Get(':id')
-  async getExampleById(@Req() req, @Res() res) {
+  async getExampleById(@Req() req: any, @Res() res: any): Promise<any> {
     const method = '[ExampleController.getExampleById]';
     try {
       // Request
@@ -48,7 +52,7 @@ export class ExampleController {
   }
 
   @Post()
-  async createExample(@Req() req, @Res() res) {
+  async createExample(@Req() req: any, @Res() res: any): Promise<any> {
     const method = '[ExampleController.createExample]';
     try {
       // Request
@@ -65,7 +69,7 @@ export class ExampleController {
   }
 
   @Put(':id')
-  async updateExample(@Req() req, @Res() res) {
+  async updateExample(@Req() req: any, @Res() res: any): Promise<any> {
     const method = '[ExampleController.updateExample]';
     try {
       // Request
@@ -83,7 +87,7 @@ export class ExampleController {
   }
 
   @Delete(':id')
-  async deleteExample(@Req() req, @Res() res) {
+  async deleteExample(@Req() req: any, @Res() res: any): Promise<any> {
     const method = '[ExampleController.deleteExample]';
     try {
       // Request
