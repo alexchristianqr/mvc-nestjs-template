@@ -13,21 +13,39 @@ export class ExampleService {
   constructor(@InjectModel('ExampleSchema') private exampleModel: Model<ExampleInterface>) {}
 
   async getExamples(): Promise<any> {
-    return await this.exampleModel.find();
+    const result = await this.exampleModel.find();
+
+    // Response
+    return {
+      message: 'all examples',
+      result: result,
+    };
   }
 
   async getExampleById(id): Promise<any> {
-    return await this.exampleModel.findOne({
+    const result = await this.exampleModel.findOne({
       _id: id,
     });
+
+    // Response
+    return {
+      message: 'single example',
+      result: result,
+    };
   }
 
   async createExample(payload): Promise<any> {
-    return await this.exampleModel.create(payload);
+    const result = await this.exampleModel.create(payload);
+
+    // Response
+    return {
+      message: 'created example',
+      result: result,
+    };
   }
 
   async updateExample(id, payload): Promise<any> {
-    return await this.exampleModel.updateOne(
+    const result = await this.exampleModel.updateOne(
       {
         _id: id,
       },
@@ -35,13 +53,24 @@ export class ExampleService {
         ...payload,
       },
     );
+
+    // Response
+    return {
+      message: 'updated example',
+      result: result,
+    };
   }
 
   async deleteExample(id): Promise<any> {
-    return await this.exampleModel.deleteOne({
+    const result = await this.exampleModel.deleteOne({
       _id: id,
     });
+
+    // Response
+    return {
+      message: 'deleted example',
+      result: result,
+    };
   }
 }
-
 ```

@@ -1,6 +1,6 @@
 import { Controller, Delete, Get, Post, Put, Req, Res } from '@nestjs/common';
 import { ExampleService } from '../services/example.service';
-import { HelperService } from '../../utils/helper.service';
+import { HelperService } from '../../utils/services/helper.service';
 
 @Controller('examples')
 export class ExampleController {
