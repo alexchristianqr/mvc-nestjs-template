@@ -1,3 +1,8 @@
+# `/tests`
+
+app.e2e-spec.ts
+
+```typescript
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as supertest from 'supertest';
@@ -94,3 +99,4 @@ describe('ExampleController (e2e)', () => {
     await app.close();
   });
 });
+```
