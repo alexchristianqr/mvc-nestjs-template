@@ -10,7 +10,7 @@
     "url": "git@github.com:acqrdeveloper/mvc-nestjs-template.git"
   },
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
