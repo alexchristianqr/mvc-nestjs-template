@@ -46,7 +46,7 @@ describe('ExampleService', () => {
 
       // Service
       const response = await exampleService.createExample(payload);
-      exampleId = response._id;
+      exampleId = response.result._id;
 
       // Tests
       expect(response.message).toEqual(expect.any(String));
