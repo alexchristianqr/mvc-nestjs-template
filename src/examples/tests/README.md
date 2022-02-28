@@ -6,6 +6,7 @@ example.service.spec.ts
 import { TestingModule } from '@nestjs/testing';
 import { ExampleService } from '../services/example.service';
 import { TestModule } from '../../utils/modules/test.module';
+import { ExampleSchema } from '../schemas/example.schema';
 
 describe('ExampleService', () => {
   // Set
@@ -13,7 +14,7 @@ describe('ExampleService', () => {
   let app: TestingModule;
 
   beforeAll(async () => {
-    app = await TestModule([ExampleService]);
+    app = await TestModule([ExampleService], [{ name: 'ExampleSchema', schema: ExampleSchema }]);
     exampleService = app.get<ExampleService>(ExampleService);
   });
 
@@ -22,8 +23,14 @@ describe('ExampleService', () => {
     let exampleId: string = null;
 
     it('getExamples', async () => {
+      // Request
+      const payload: object = {
+        page: 1,
+        perPage: 10,
+      };
+
       // Service
-      const response = await exampleService.getExamples();
+      const response = await exampleService.getExamples(payload);
 
       // Tests
       expect(response.message).toEqual(expect.any(String));
