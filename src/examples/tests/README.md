@@ -19,9 +19,10 @@ describe('ExampleService', () => {
 
   describe('root', () => {
     // Set
-    let exampleId = null;
+    let exampleId: string = null;
 
     it('getExamples', async () => {
+      // Service
       const response = await exampleService.getExamples();
 
       // Tests
@@ -30,10 +31,13 @@ describe('ExampleService', () => {
     });
 
     it('createExample', async () => {
-      let payload = {
+      // Request
+      let payload: object = {
         title: 'Title #1',
         description: 'single description',
       };
+
+      // Service
       const response = await exampleService.createExample(payload);
       exampleId = response._id;
 
@@ -43,6 +47,7 @@ describe('ExampleService', () => {
     });
 
     it('getExampleById', async () => {
+      // Service
       const response = await exampleService.getExampleById(exampleId);
 
       // Tests
@@ -51,10 +56,13 @@ describe('ExampleService', () => {
     });
 
     it('updateExample', async () => {
-      let payload = {
+      // Request
+      let payload: object = {
         title: 'Title #5',
         description: 'single description',
       };
+
+      // Service
       const response = await exampleService.updateExample(exampleId, payload);
 
       // Tests
@@ -63,6 +71,7 @@ describe('ExampleService', () => {
     });
 
     it('deleteExample', async () => {
+      // Service
       const response = await exampleService.deleteExample(exampleId);
 
       // Tests
