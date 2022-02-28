@@ -1,4 +1,5 @@
 import { Controller, Delete, Get, Post, Put, Req, Res } from '@nestjs/common';
+import { Request, Response } from 'express';
 import { ExampleService } from '../services/example.service';
 import { HelperService } from '../../utils/services/helper.service';
 
@@ -11,8 +12,8 @@ export class ExampleController {
   }
 
   @Get()
-  async getExamples(@Req() req: any, @Res() res: any): Promise<any> {
-    const method = '[ExampleController.getExamples]';
+  async getExamples(@Req() req: Request, @Res() res: Response): Promise<any> {
+    const method: string = '[ExampleController.getExamples]';
     try {
       // Request
       const {} = req.params;
@@ -20,7 +21,7 @@ export class ExampleController {
       const {} = req.query;
 
       // Service
-      const response = await this.exampleService.getExamples();
+      const response: object = await this.exampleService.getExamples();
 
       // Response
       return HelperService.response({ req, res }, { method, ...response });
@@ -30,14 +31,14 @@ export class ExampleController {
   }
 
   @Get(':id')
-  async getExampleById(@Req() req: any, @Res() res: any): Promise<any> {
-    const method = '[ExampleController.getExampleById]';
+  async getExampleById(@Req() req: Request, @Res() res: Response): Promise<any> {
+    const method: string = '[ExampleController.getExampleById]';
     try {
       // Request
-      const exampleId = req.params.id;
+      const exampleId: string = req.params.id;
 
       // Service
-      const response = await this.exampleService.getExampleById(exampleId);
+      const response: object = await this.exampleService.getExampleById(exampleId);
 
       // Response
       return HelperService.response({ req, res }, { method, ...response });
@@ -47,14 +48,14 @@ export class ExampleController {
   }
 
   @Post()
-  async createExample(@Req() req: any, @Res() res: any): Promise<any> {
-    const method = '[ExampleController.createExample]';
+  async createExample(@Req() req: Request, @Res() res: Response): Promise<any> {
+    const method: string = '[ExampleController.createExample]';
     try {
       // Request
-      const paylaod = req.body;
+      const paylaod: object = req.body;
 
       // Service
-      const response = await this.exampleService.createExample(paylaod);
+      const response: object = await this.exampleService.createExample(paylaod);
 
       // Response
       return HelperService.response({ req, res }, { method, ...response });
@@ -64,15 +65,15 @@ export class ExampleController {
   }
 
   @Put(':id')
-  async updateExample(@Req() req: any, @Res() res: any): Promise<any> {
-    const method = '[ExampleController.updateExample]';
+  async updateExample(@Req() req: Request, @Res() res: Response): Promise<any> {
+    const method: string = '[ExampleController.updateExample]';
     try {
       // Request
-      const exampleId = req.params.id;
-      const payload = req.body;
+      const exampleId: string = req.params.id;
+      const payload: object = req.body;
 
       // Service
-      const response = await this.exampleService.updateExample(exampleId, payload);
+      const response: object = await this.exampleService.updateExample(exampleId, payload);
 
       // Response
       return HelperService.response({ req, res }, { method, ...response });
@@ -82,19 +83,19 @@ export class ExampleController {
   }
 
   @Delete(':id')
-  async deleteExample(@Req() req: any, @Res() res: any): Promise<any> {
-    const method = '[ExampleController.deleteExample]';
+  async deleteExample(@Req() req: Request, @Res() res: Response): Promise<any> {
+    const method: string = '[ExampleController.deleteExample]';
     try {
       // Request
-      const exampleId = req.params.id;
+      const exampleId: string = req.params.id;
 
       // Service
-      const response = await this.exampleService.deleteExample(exampleId);
+      const response: object = await this.exampleService.deleteExample(exampleId);
 
       // Response
       return HelperService.response({ req, res }, { method, ...response });
-    } catch (e) {
-      return HelperService.response({ req, res }, { method, e });
+    } catch (error) {
+      return HelperService.response({ req, res }, { method, error });
     }
   }
 }

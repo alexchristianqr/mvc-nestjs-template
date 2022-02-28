@@ -17,7 +17,7 @@ export class HelperService {
    * @param response
    * @return {Promise<*>}
    */
-  static response({ req, res }, response): any {
+  static response({ req, res }, response): void {
     // Request
     let statusCodeHttp = null;
 

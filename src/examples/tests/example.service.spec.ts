@@ -1,6 +1,7 @@
 import { TestingModule } from '@nestjs/testing';
 import { ExampleService } from '../services/example.service';
 import { TestModule } from '../../utils/modules/test.module';
+import { ExampleInterface } from '../interfaces/example.interface';
 
 describe('ExampleService', () => {
   // Set
@@ -25,7 +26,7 @@ describe('ExampleService', () => {
     });
 
     it('createExample', async () => {
-      let payload = {
+      let payload: object = {
         title: 'Title #1',
         description: 'single description',
       };
