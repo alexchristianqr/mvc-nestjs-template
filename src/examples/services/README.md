@@ -17,7 +17,7 @@ export class ExampleService {
   }
 
   async getExamples(): Promise<any> {
-    const result = await this.exampleModel.find();
+    const result: object = await this.exampleModel.find();
 
     // Response
     return {
@@ -26,9 +26,9 @@ export class ExampleService {
     };
   }
 
-  async getExampleById(id: string): Promise<any> {
-    const result = await this.exampleModel.findOne({
-      _id: id,
+  async getExampleById(exampleId: string): Promise<any> {
+    const result: object = await this.exampleModel.findOne({
+      _id: exampleId,
     });
 
     // Response
@@ -39,7 +39,7 @@ export class ExampleService {
   }
 
   async createExample(payload: object): Promise<any> {
-    const result = await this.exampleModel.create(payload);
+    const result: object = await this.exampleModel.create(payload);
 
     // Response
     return {
@@ -48,10 +48,10 @@ export class ExampleService {
     };
   }
 
-  async updateExample(id: string, payload: object): Promise<any> {
-    const result = await this.exampleModel.updateOne(
+  async updateExample(exampleId: string, payload: object): Promise<any> {
+    const result: object = await this.exampleModel.updateOne(
       {
-        _id: id,
+        _id: exampleId,
       },
       {
         ...payload,
@@ -65,9 +65,9 @@ export class ExampleService {
     };
   }
 
-  async deleteExample(id: string): Promise<any> {
-    const result = await this.exampleModel.deleteOne({
-      _id: id,
+  async deleteExample(exampleId: string): Promise<any> {
+    const result: object = await this.exampleModel.deleteOne({
+      _id: exampleId,
     });
 
     // Response
