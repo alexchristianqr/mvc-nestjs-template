@@ -16,7 +16,16 @@ export class ExampleService {
     this.exampleModel = exampleModel;
   }
 
-  async getExamples(): Promise<any> {
+  async getExamples(payload: object): Promise<any> {
+    // Request
+    const { page, perPage }: any = payload;
+
+    // Set
+    let paginate: object;
+    if (page && perPage) {
+      paginate = { page, perPage };
+    }
+
     const result: object = await this.exampleModel.find();
 
     // Response
