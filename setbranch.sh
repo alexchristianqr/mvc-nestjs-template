@@ -14,6 +14,6 @@ cd temp
 git init
 git add -A
 git commit -m "[added] structure project template"
-git push -f git@github.com:acqrdeveloper/mvc-nestjs-template.git develop:master
+git push -f git@github.com:acqrdeveloper/mvc-nestjs-template.git master:template
 
 cd -
