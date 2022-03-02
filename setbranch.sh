@@ -6,7 +6,7 @@ rm -rf temp
 
 mkdir -p temp
 
-filesIgnored=`ls -A | grep "node_modules" | grep ".idea" | grep ".docker" | grep "package-lock.json" | grep "temp" | grep "dist" | grep ".env" | grep ".git" | grep "setbranch.sh"`
+filesIgnored=`ls -A | grep -wv "node_modules\|.idea\|.docker\|package-lock.json\|temp\|dist\|.git\|setbranch.sh"`
 cp -vr ${filesIgnored} temp/
 
 cd temp
