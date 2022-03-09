@@ -5,7 +5,7 @@ example.service.spec.ts
 ```typescript
 import { TestingModule } from '@nestjs/testing';
 import { ExampleService } from '../services/example.service';
-import { TestModule } from '../../utils/modules/test.module';
+import { testsUtil } from '../../utils/tests.util';
 import { ExampleSchema } from '../schemas/example.schema';
 
 describe('ExampleService', () => {
@@ -14,7 +14,7 @@ describe('ExampleService', () => {
   let app: TestingModule;
 
   beforeAll(async () => {
-    app = await TestModule([ExampleService], [{ name: 'ExampleSchema', schema: ExampleSchema }]);
+    app = await testsUtil([ExampleService], [{ name: 'ExampleSchema', schema: ExampleSchema }]);
     exampleService = app.get<ExampleService>(ExampleService);
   });
 

@@ -6,7 +6,7 @@ example.controller.ts
 import { Controller, Delete, Get, Post, Put, Req, Res } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { ExampleService } from '../services/example.service';
-import { HelperService } from '../../utils/services/helper.service';
+import { sendResponse } from '../../utils/services/helper.service';
 
 @Controller('examples')
 export class ExampleController {
@@ -29,9 +29,9 @@ export class ExampleController {
       const response: object = await this.exampleService.getExamples();
 
       // Response
-      return HelperService.response({ req, res }, { method, ...response });
+      return sendResponse(req, res, { method, ...response });
     } catch (e) {
-      return HelperService.response({ req, res }, { method, e });
+      return sendResponse(req, res, { method, e });
     }
   }
 
@@ -46,9 +46,9 @@ export class ExampleController {
       const response: object = await this.exampleService.getExampleById(exampleId);
 
       // Response
-      return HelperService.response({ req, res }, { method, ...response });
+      return sendResponse(req, res, { method, ...response });
     } catch (e) {
-      return HelperService.response({ req, res }, { method, e });
+      return sendResponse(req, res, { method, e });
     }
   }
 
@@ -63,9 +63,9 @@ export class ExampleController {
       const response: object = await this.exampleService.createExample(paylaod);
 
       // Response
-      return HelperService.response({ req, res }, { method, ...response });
+      return sendResponse(req, res, { method, ...response });
     } catch (e) {
-      return HelperService.response({ req, res }, { method, e });
+      return sendResponse(req, res, { method, e });
     }
   }
 
@@ -81,9 +81,9 @@ export class ExampleController {
       const response: object = await this.exampleService.updateExample(exampleId, payload);
 
       // Response
-      return HelperService.response({ req, res }, { method, ...response });
+      return sendResponse(req, res, { method, ...response });
     } catch (e) {
-      return HelperService.response({ req, res }, { method, e });
+      return sendResponse(req, res, { method, e });
     }
   }
 
@@ -98,9 +98,9 @@ export class ExampleController {
       const response: object = await this.exampleService.deleteExample(exampleId);
 
       // Response
-      return HelperService.response({ req, res }, { method, ...response });
-    } catch (error) {
-      return HelperService.response({ req, res }, { method, error });
+      return sendResponse(req, res, { method, ...response });
+    } catch (e) {
+      return sendResponse(req, res, { method, e });
     }
   }
 }
