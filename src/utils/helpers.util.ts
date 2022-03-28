@@ -19,7 +19,7 @@ type myschema = {
  */
 export const sendResponse = (req: Request, res: Response, response: any): any => {
   // Request
-  let statusCodeHttp = null;
+  let statusCodeHttp;
 
   // Payload response
   const payload = {
@@ -46,7 +46,7 @@ export const sendResponse = (req: Request, res: Response, response: any): any =>
   }
   // Catch
   else {
-    let error = null;
+    let error;
     payload['success'] = false;
 
     if (response.e.response) {
@@ -136,7 +136,7 @@ export const sendResponse = (req: Request, res: Response, response: any): any =>
 export const getModel = async ({ model, modelQuery, paginate, joins, fields, sort }: myschema): Promise<any> => {
   console.log('[HelperService.getModel]');
 
-  let result = null;
+  let result;
 
   // Modelo con pagina
   if (paginate) {
@@ -144,7 +144,7 @@ export const getModel = async ({ model, modelQuery, paginate, joins, fields, sor
     const perPage = parseInt(paginate.perPage);
     const page = parseInt(paginate.page);
 
-    let sortQuery = {};
+    let sortQuery;
     if (sort) {
       sortQuery = sort;
     } else {

@@ -15,6 +15,7 @@ describe('ExampleController (e2e)', () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     }).compile();
+
     app = moduleFixture.createNestApplication();
     request = supertest(app.getHttpServer());
     await app.init();
@@ -22,7 +23,7 @@ describe('ExampleController (e2e)', () => {
 
   it('/examples (GET)', async () => {
     // Request
-    const url: string = `${baseUrl}`;
+    const url = `${baseUrl}`;
 
     // API
     const response = await request.get(url);
@@ -39,7 +40,7 @@ describe('ExampleController (e2e)', () => {
 
   it('/examples (POST)', async () => {
     // Request
-    const url: string = `${baseUrl}`;
+    const url = `${baseUrl}`;
 
     // API
     const response = await request.post(url);
@@ -57,7 +58,7 @@ describe('ExampleController (e2e)', () => {
 
   it('/examples (PUT)', async () => {
     // Request
-    const url: string = `${baseUrl}/${exampleId}`;
+    const url = `${baseUrl}/${exampleId}`;
     const payload: object = {};
 
     // API
@@ -75,7 +76,7 @@ describe('ExampleController (e2e)', () => {
 
   it('/examples (DELETE)', async () => {
     // Request
-    const url: string = `${baseUrl}/${exampleId}`;
+    const url = `${baseUrl}/${exampleId}`;
 
     // API
     const response = await request.delete(url);

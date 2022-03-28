@@ -7,4 +7,5 @@ async function bootstrap() {
   await app.listen(process.env.PORT);
   console.log(`Server nodejs started in ${process.env.NODE_APP_URL}`);
 }
+
 bootstrap();
