@@ -1,4 +1,4 @@
-# MVC API NestJS
+# MVC Template NestJS
 
 ## Description
 
@@ -45,6 +45,13 @@ $ npm run test:e2e
 
 # test coverage
 $ npm run test:cov
+```
+
+## Set branch master to template
+
+```bash
+# ejecutar en la terminal
+$ sh setbranch
 ```
 
 ## License
