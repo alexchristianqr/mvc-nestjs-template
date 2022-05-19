@@ -6,18 +6,18 @@ example.controller.ts
 import { Controller, Delete, Get, Post, Put, Req, Res } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { ExampleService } from '../services/example.service';
-import { sendResponse } from '../../utils/services/helper.service';
+import { sendResponse } from '../../utils/helpers.util';
 
 @Controller('examples')
 export class ExampleController {
   private readonly exampleService;
 
-  constructor(exampleService: ExampleService) {
+  constructor (exampleService: ExampleService) {
     this.exampleService = exampleService;
   }
 
   @Get()
-  async getExamples(@Req() req: Request, @Res() res: Response): Promise<any> {
+  async getExamples (@Req() req: Request, @Res() res: Response): Promise<any> {
     const method: string = '[ExampleController.getExamples]';
     try {
       // Request
@@ -36,7 +36,7 @@ export class ExampleController {
   }
 
   @Get(':id')
-  async getExampleById(@Req() req: Request, @Res() res: Response): Promise<any> {
+  async getExampleById (@Req() req: Request, @Res() res: Response): Promise<any> {
     const method: string = '[ExampleController.getExampleById]';
     try {
       // Request
@@ -53,7 +53,7 @@ export class ExampleController {
   }
 
   @Post()
-  async createExample(@Req() req: Request, @Res() res: Response): Promise<any> {
+  async createExample (@Req() req: Request, @Res() res: Response): Promise<any> {
     const method: string = '[ExampleController.createExample]';
     try {
       // Request
@@ -70,7 +70,7 @@ export class ExampleController {
   }
 
   @Put(':id')
-  async updateExample(@Req() req: Request, @Res() res: Response): Promise<any> {
+  async updateExample (@Req() req: Request, @Res() res: Response): Promise<any> {
     const method: string = '[ExampleController.updateExample]';
     try {
       // Request
@@ -88,7 +88,7 @@ export class ExampleController {
   }
 
   @Delete(':id')
-  async deleteExample(@Req() req: Request, @Res() res: Response): Promise<any> {
+  async deleteExample (@Req() req: Request, @Res() res: Response): Promise<any> {
     const method: string = '[ExampleController.deleteExample]';
     try {
       // Request
