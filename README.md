@@ -51,7 +51,7 @@ $ npm run test:cov
 
 ```bash
 # ejecutar en la terminal
-$ sh setbranch
+$ sh setbranch.sh
 ```
 
 ## License
