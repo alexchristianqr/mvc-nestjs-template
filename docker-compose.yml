@@ -1,0 +1,28 @@
+# Documentation
+# https://docs.docker.com/compose/compose-file
+
+version: "3"
+
+services:
+    nodeapp:
+        image: nodeapp
+        build:
+            context: .
+        restart: always
+        links:
+            - db
+        depends_on:
+            - db
+        env_file:
+            - "./.env"
+        ports:
+            - 3000:3000
+        volumes:
+            - "./src:/src"
+
+    db:
+        image: mongo
+        ports:
+            - 27000:27017
+        volumes:
+            - "./.docker/mongodb:/data/db"
