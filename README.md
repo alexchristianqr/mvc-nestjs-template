@@ -72,9 +72,16 @@ docker run -dp 3000:3000 --add-host=networklocalhost:192.168.0.13 mainapi
 ## Doc
 
 https://www.prisma.io/nestjs
+</br>
 https://docs.nestjs.com/recipes/prisma
+</br>
 https://docs.nestjs.com/recipes/prisma#set-up-prisma
+</br>
 https://docs.nestjs.com/recipes/prisma#set-the-database-connection
+</br>
 https://docs.nestjs.com/recipes/prisma#create-two-database-tables-with-prisma-migrate
+</br>
 https://docs.nestjs.com/recipes/prisma#install-and-generate-prisma-client
+</br>
 https://docs.nestjs.com/recipes/prisma#use-prisma-client-in-your-nestjs-services
+</br>
