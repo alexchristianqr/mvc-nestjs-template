@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { PrismaModule } from 'nestjs-prisma';
+import { UserController } from './users/user.controller';
+import { UserService } from './users/user.service';
 
 @Module({
   imports: [
@@ -12,7 +14,7 @@ import { PrismaModule } from 'nestjs-prisma';
       useFactory: async (configService: ConfigService) => {
         return {
           prismaOptions: {
-            log: [configService.get('log')],
+            // log: [configService.get('log')],
             datasources: {
               db: {
                 url: configService.get('DATABASE_URL'),
@@ -25,5 +27,7 @@ import { PrismaModule } from 'nestjs-prisma';
       inject: [ConfigService],
     }),
   ],
+  controllers: [UserController],
+  providers: [UserService],
 })
 export class AppModule {}
