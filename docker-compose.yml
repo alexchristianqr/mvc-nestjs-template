@@ -9,8 +9,6 @@ services:
     build: .
     container_name: "mainapi"
     restart: "always"
-    links:
-      - db
     volumes:
       - "./src:/src"
     env_file:
@@ -19,15 +17,17 @@ services:
       - "3000:3000"
     extra_hosts:
       - "networklocalhost:192.168.0.13"
-    depends_on:
-      - dbapp
-  dbapp:
-    image: "mongo"
-    container_name: "mongodatabase-app"
-    ports:
-      - "27000:27017"
-    volumes:
-      - "./.docker/mongodb:/data/db"
+  #    links:
+  #      - dbapp
+  #    depends_on:
+  #      - dbapp
+  #  dbapp:
+  #    image: "mongo"
+  #    container_name: "mongodatabase-app"
+  #    ports:
+  #      - "27000:27017"
+  #    volumes:
+  #      - "./.docker/mongodb:/data/db"
   nginx:
     image: "mainapi-nginx"
     build: "./.docker/nginx"
