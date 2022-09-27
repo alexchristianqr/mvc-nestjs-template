@@ -8,6 +8,12 @@ API mvc description
 
 http://localhost:3000/
 
+## Git clone
+
+```bash
+git clone -b mysql git@github.com:alexchristianqr/mvc-nestjs-template.git
+```
+
 ## ENV
 
 Crea el archivo .env a partir del archivo .env.example
