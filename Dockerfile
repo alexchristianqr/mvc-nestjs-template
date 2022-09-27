@@ -1,7 +1,7 @@
-FROM node:14
-WORKDIR /app
-RUN npm install -g @nestjs/cli
-COPY ["package.json", "package-lock.json*", "./"]
-RUN npm install
-COPY . .
-CMD ["npm", "start"]
+FROM node:14-alpine as alpineServer
+WORKDIR /myserver/www
+RUN npm install -g @nestjs/cli pm2
+COPY . /myserver/www
+RUN npm install && npm run build
+EXPOSE 3000
+CMD ["pm2-runtime", "start", "/myserver/www/dist/app.js"]

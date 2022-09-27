@@ -39,5 +39,4 @@ lerna-debug.log*
 .env.*
 .local-example
 package-lock.json
-.docker
 temp/

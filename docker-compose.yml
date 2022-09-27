@@ -4,25 +4,36 @@
 version: "3"
 
 services:
-  nodeapp:
-    image: nodeapp
-    build:
-      context: .
-    restart: always
+  app:
+    image: "mainapi"
+    build: .
+    container_name: "mainapi"
+    restart: "always"
     links:
       - db
-    depends_on:
-      - db
+    volumes:
+      - "./src:/src"
     env_file:
       - "./.env.development"
     ports:
-      - 3000:3000
-    volumes:
-      - "./src:/src"
-
-  db:
-    image: mongo
+      - "3000:3000"
+    extra_hosts:
+      - "networklocalhost:192.168.0.13"
+    depends_on:
+      - dbapp
+  dbapp:
+    image: "mongo"
+    container_name: "mongodatabase-app"
     ports:
-      - 27000:27017
+      - "27000:27017"
     volumes:
       - "./.docker/mongodb:/data/db"
+  nginx:
+    image: "mainapi-nginx"
+    build: "./.docker/nginx"
+    container_name: "mainapi-nginx"
+    restart: "always"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - app

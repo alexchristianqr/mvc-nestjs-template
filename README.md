@@ -12,48 +12,59 @@ http://localhost:3000/
 
 Crea el archivo .env a partir del archivo .env.example
 
-## Installation
+## Run with pm2
 
 ```bash
-$ npm install
+pm2 start ecosystem.config.js --env development
+pm2 start ecosystem.config.js --env production
 ```
 
-## Running the app
+## Run with docker-compose
 
 ```bash
-# execute with docker
-$ docker-compose up -d --build
-
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+# Crear imagen con docker
+docker-compose up -d --build
 ```
 
-## Test
+## Run with docker
 
 ```bash
-# unit tests
-$ npm run test
+# Crear imagen con docker
+docker build -t mainapi .
 
-# e2e tests
-$ npm run test:e2e
+# Crear un contenedor a partir de una imagen con docker en el puerto X
+docker run -dp 3000:3000 mainapi
 
-# test coverage
-$ npm run test:cov
+# Crear un contenedor a partir de una imagen con docker en el puerto X incluye un argumento extra
+docker run -dp 3000:3000 --add-host=networklocalhost:192.168.0.13 mainapi
 ```
 
-## Set branch master to template
+## Ports assigned
 
-```bash
-# ejecutar en la terminal
-$ sh setbranch.sh
-```
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+<table>
+<tr>
+<th colspan="1" rowspan="2">Enviroment</th>
+<th colspan="2">Nodejs</th>
+<th colspan="2">Nginx</th>
+</tr>
+<tr>
+<th>Port External</th>
+<th>Port Internal</th>
+<th>Port External</th>
+<th>Port Internal</th>
+</tr>
+<tr>
+<td>local</td>
+<td>3000</td>
+<td>3000</td>
+<td>3000</td>
+<td>3000</td>
+</tr>
+<tr>
+<td>development</td>
+<td>3000</td>
+<td>3000</td>
+<td>3001</td>
+<td>3001</td>
+</tr>
+</table>
