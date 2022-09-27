@@ -3,11 +3,11 @@
 example.interface.ts
 
 ```typescript
-import { Document } from 'mongoose';
+import { Document } from 'mongoose'
 
 export interface ExampleInterface extends Document {
-  _id?: string;
-  title: string;
-  description: string;
+  _id?: string
+  title: string
+  description: string
 }
 ```

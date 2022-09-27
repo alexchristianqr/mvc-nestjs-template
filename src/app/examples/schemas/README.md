@@ -3,7 +3,7 @@
 example.schema.ts
 
 ```typescript
-import { Schema } from 'mongoose';
+import { Schema } from 'mongoose'
 
 export const ExampleSchema = new Schema(
   {
@@ -15,5 +15,5 @@ export const ExampleSchema = new Schema(
     timestamps: true,
     collection: 'examples',
   },
-);
+)
 ```

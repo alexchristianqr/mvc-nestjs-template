@@ -1,18 +1,18 @@
-import { Injectable } from '@nestjs/common';
-import { PrismaOptionsFactory, PrismaServiceOptions } from 'nestjs-prisma';
+import { Injectable } from '@nestjs/common'
+import { PrismaOptionsFactory, PrismaServiceOptions } from 'nestjs-prisma'
 
 @Injectable()
 export class PrismaConfigService implements PrismaOptionsFactory {
-  constructor () {
+  constructor() {
     // TODO inject any other service here like the `ConfigService`
   }
 
-  createPrismaOptions (): PrismaServiceOptions | Promise<PrismaServiceOptions> {
+  createPrismaOptions(): PrismaServiceOptions | Promise<PrismaServiceOptions> {
     return {
       prismaOptions: {
         log: ['info', 'query'],
       },
       explicitConnect: true,
-    };
+    }
   }
 }

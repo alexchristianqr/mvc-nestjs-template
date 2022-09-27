@@ -1,6 +1,6 @@
-import { Module } from "@nestjs/common";
-import { ExampleController } from "../examples/example.controller";
-import { ExampleService } from "../examples/example.service";
+import { Module } from '@nestjs/common';
+import { ExampleController } from '../examples/example.controller';
+import { ExampleService } from '../examples/example.service';
 
 @Module({
   // imports: [],

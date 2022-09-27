@@ -13,7 +13,7 @@ import { MyAppModule } from './app/module';
       useFactory: async (configService: ConfigService) => {
         return {
           prismaOptions: {
-            // log: [configService.get('log')],
+            log: ['query', 'info', 'warn', 'error'],
             datasources: {
               db: {
                 url: configService.get('DATABASE_URL'),

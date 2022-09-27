@@ -1,7 +1,7 @@
 import { Controller, Delete, Get, Post, Put, Req, Res } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { ExampleService } from './example.service';
-import { sendResponse } from '../../common/utils/helpers.util';
+import { sendResponse } from '../../common/utils/response.util';
 
 @Controller('examples')
 export class ExampleController {
@@ -16,7 +16,6 @@ export class ExampleController {
     const method = '[ExampleController.getExamples]';
     try {
       // Request
-      console.log('alexxxx', req.query);
       const {} = req.params;
       const {} = req.body;
       const {} = req.query;
@@ -33,9 +32,7 @@ export class ExampleController {
 
   @Get(':id')
   async getExampleById (
-    @Req() req: Request,
-    @Res() res: Response,
-  ): Promise<any> {
+    @Req() req: Request, @Res() res: Response): Promise<any> {
     const method = '[ExampleController.getExampleById]';
     try {
       // Request
@@ -43,8 +40,7 @@ export class ExampleController {
 
       // Service
       const response: object = await this.exampleService.getExampleById(
-        exampleId,
-      );
+        exampleId);
 
       // Response
       return sendResponse(req, res, { method, ...response });
@@ -82,9 +78,7 @@ export class ExampleController {
 
       // Service
       const response: object = await this.exampleService.updateExample(
-        exampleId,
-        payload,
-      );
+        exampleId, payload);
 
       // Response
       return sendResponse(req, res, { method, ...response });
@@ -103,8 +97,7 @@ export class ExampleController {
 
       // Service
       const response: object = await this.exampleService.deleteExample(
-        exampleId,
-      );
+        exampleId);
 
       // Response
       return sendResponse(req, res, { method, ...response });
