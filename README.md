@@ -77,6 +77,8 @@ docker run -dp 3000:3000 --add-host=networklocalhost:192.168.0.13 mainapi
 
 ## Doc
 
+https://www.npmjs.com/package/nestjs-prisma
+</br>
 https://www.prisma.io/nestjs
 </br>
 https://docs.nestjs.com/recipes/prisma
