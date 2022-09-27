@@ -36,6 +36,7 @@ lerna-debug.log*
 
 # Development
 .env
+.env.*
 .local-example
 package-lock.json
 .docker
