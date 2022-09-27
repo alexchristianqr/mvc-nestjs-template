@@ -1,12 +1,7 @@
-# `/controllers`
-
-example.controller.ts
-
-```typescript
 import { Controller, Delete, Get, Post, Put, Req, Res } from '@nestjs/common';
 import { Request, Response } from 'express';
-import { ExampleService } from '../services/example.service';
-import { sendResponse } from '../../utils/helpers.util';
+import { ExampleService } from './example.service';
+import { sendResponse } from '../../common/utils/helpers.util';
 
 @Controller('examples')
 export class ExampleController {
@@ -18,9 +13,10 @@ export class ExampleController {
 
   @Get()
   async getExamples (@Req() req: Request, @Res() res: Response): Promise<any> {
-    const method: string = '[ExampleController.getExamples]';
+    const method = '[ExampleController.getExamples]';
     try {
       // Request
+      console.log('alexxxx', req.query);
       const {} = req.params;
       const {} = req.body;
       const {} = req.query;
@@ -36,14 +32,19 @@ export class ExampleController {
   }
 
   @Get(':id')
-  async getExampleById (@Req() req: Request, @Res() res: Response): Promise<any> {
-    const method: string = '[ExampleController.getExampleById]';
+  async getExampleById (
+    @Req() req: Request,
+    @Res() res: Response,
+  ): Promise<any> {
+    const method = '[ExampleController.getExampleById]';
     try {
       // Request
       const exampleId: string = req.params.id;
 
       // Service
-      const response: object = await this.exampleService.getExampleById(exampleId);
+      const response: object = await this.exampleService.getExampleById(
+        exampleId,
+      );
 
       // Response
       return sendResponse(req, res, { method, ...response });
@@ -53,14 +54,15 @@ export class ExampleController {
   }
 
   @Post()
-  async createExample (@Req() req: Request, @Res() res: Response): Promise<any> {
-    const method: string = '[ExampleController.createExample]';
+  async createExample (
+    @Req() req: Request, @Res() res: Response): Promise<any> {
+    const method = '[ExampleController.createExample]';
     try {
       // Request
-      const paylaod: object = req.body;
+      const payload: object = req.body;
 
       // Service
-      const response: object = await this.exampleService.createExample(paylaod);
+      const response: object = await this.exampleService.createExample(payload);
 
       // Response
       return sendResponse(req, res, { method, ...response });
@@ -70,15 +72,19 @@ export class ExampleController {
   }
 
   @Put(':id')
-  async updateExample (@Req() req: Request, @Res() res: Response): Promise<any> {
-    const method: string = '[ExampleController.updateExample]';
+  async updateExample (
+    @Req() req: Request, @Res() res: Response): Promise<any> {
+    const method = '[ExampleController.updateExample]';
     try {
       // Request
       const exampleId: string = req.params.id;
       const payload: object = req.body;
 
       // Service
-      const response: object = await this.exampleService.updateExample(exampleId, payload);
+      const response: object = await this.exampleService.updateExample(
+        exampleId,
+        payload,
+      );
 
       // Response
       return sendResponse(req, res, { method, ...response });
@@ -88,14 +94,17 @@ export class ExampleController {
   }
 
   @Delete(':id')
-  async deleteExample (@Req() req: Request, @Res() res: Response): Promise<any> {
-    const method: string = '[ExampleController.deleteExample]';
+  async deleteExample (
+    @Req() req: Request, @Res() res: Response): Promise<any> {
+    const method = '[ExampleController.deleteExample]';
     try {
       // Request
       const exampleId: string = req.params.id;
 
       // Service
-      const response: object = await this.exampleService.deleteExample(exampleId);
+      const response: object = await this.exampleService.deleteExample(
+        exampleId,
+      );
 
       // Response
       return sendResponse(req, res, { method, ...response });
@@ -104,4 +113,3 @@ export class ExampleController {
     }
   }
 }
-```

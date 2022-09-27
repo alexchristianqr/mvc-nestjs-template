@@ -5,7 +5,7 @@ example.service.spec.ts
 ```typescript
 import { TestingModule } from '@nestjs/testing';
 import { ExampleService } from '../services/example.service';
-import { testsUtil } from '../../utils/tests.util';
+import { testsUtil } from './tests.util';
 import { ExampleSchema } from '../schemas/example.schema';
 
 describe('ExampleService', () => {

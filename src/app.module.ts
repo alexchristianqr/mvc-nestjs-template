@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { PrismaModule } from 'nestjs-prisma';
-import { UserController } from './users/user.controller';
-import { UserService } from './users/user.service';
+import { MyAppModule } from './app/module';
 
 @Module({
   imports: [
@@ -26,8 +25,7 @@ import { UserService } from './users/user.service';
       },
       inject: [ConfigService],
     }),
+    MyAppModule,
   ],
-  controllers: [UserController],
-  providers: [UserService],
 })
 export class AppModule {}
