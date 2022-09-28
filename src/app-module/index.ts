@@ -7,4 +7,4 @@ import { ExampleService } from '../app/examples/example.service'
   controllers: [ExampleController],
   providers: [ExampleService],
 })
-export class MyAppModule {}
+export class CustomAppModule {}
