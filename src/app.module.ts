@@ -1,31 +1,9 @@
 import { Module } from '@nestjs/common'
-import { ConfigModule, ConfigService } from '@nestjs/config'
-import { PrismaModule } from 'nestjs-prisma'
-import { MyAppModule } from './app/module'
+import { ConfigModule } from '@nestjs/config'
+import { MongooseModule } from '@nestjs/mongoose'
+import { MyAppModule } from './module'
 
 @Module({
-  imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-    }),
-    PrismaModule.forRootAsync({
-      isGlobal: true,
-      useFactory: async (configService: ConfigService) => {
-        return {
-          prismaOptions: {
-            log: ['query', 'info', 'warn', 'error'],
-            datasources: {
-              db: {
-                url: configService.get('DATABASE_URL'),
-              },
-            },
-          },
-          explicitConnect: configService.get('explicit'),
-        }
-      },
-      inject: [ConfigService],
-    }),
-    MyAppModule,
-  ],
+  imports: [ConfigModule.forRoot(), MongooseModule.forRoot(process.env.DB_CONNECTION), MyAppModule],
 })
 export class AppModule {}

@@ -1,10 +1,7 @@
 import { Injectable } from '@nestjs/common'
-import { PrismaService } from 'nestjs-prisma'
 
 @Injectable()
 export class ExampleService {
-  constructor(private prisma: PrismaService) {}
-
   getExamples() {
     const result: object = { users: [] }
 
