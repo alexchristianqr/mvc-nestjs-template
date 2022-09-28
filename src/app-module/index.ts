@@ -1,10 +1,7 @@
 import { Module } from '@nestjs/common'
-import { ExampleController } from '../app/examples/example.controller'
-import { ExampleService } from '../app/examples/example.service'
+import { ExampleModule } from '../app/examples/example.module'
 
 @Module({
-  // imports: [],
-  controllers: [ExampleController],
-  providers: [ExampleService],
+  imports: [ExampleModule],
 })
 export class CustomAppModule {}

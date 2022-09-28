@@ -1,7 +1,16 @@
 import { Injectable } from '@nestjs/common'
+import { InjectModel } from '@nestjs/mongoose'
+import { Model } from 'mongoose'
+import { ExampleInterface } from './example.interface'
 
 @Injectable()
 export class ExampleService {
+  private readonly exampleModel
+
+  constructor(@InjectModel('Example') exampleModel: Model<ExampleInterface>) {
+    this.exampleModel = exampleModel
+  }
+
   getExamples() {
     const result: object = { users: [] }
 
