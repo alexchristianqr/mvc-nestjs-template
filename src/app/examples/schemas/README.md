@@ -1,6 +1,6 @@
 # `/schemas`
 
-example.schema.ts
+example.graphql
 
 ```typescript
 import { Schema } from 'mongoose'

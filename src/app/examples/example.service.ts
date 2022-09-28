@@ -1,15 +1,23 @@
 import { Injectable } from '@nestjs/common'
+import { Example, ExampleDocument, ExampleSchema } from './example.schema'
+import { InjectModel } from '@nestjs/mongoose'
+import { Model } from 'mongoose'
+import { ExampleEntity } from './example.entity'
 
 @Injectable()
 export class ExampleService {
-  getExamples() {
-    const result: object = { users: [] }
+  constructor(@InjectModel(Example.name) private Example: Model<ExampleDocument>) {}
+
+  async getExamples(): Promise<any> {
+    // const result: object = { users: [] }
+    // const result: object = this.Example.find({})
+    return this.Example.find({})
 
     // Response
-    return {
-      message: 'all examples',
-      result: result,
-    }
+    // return {
+    //   message: 'all examples',
+    //   result: result,
+    // }
   }
 
   getExampleById(userId: string) {
