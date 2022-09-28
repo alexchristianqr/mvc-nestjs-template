@@ -1,7 +1,7 @@
-import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { PrismaModule } from 'nestjs-prisma';
-import { MyAppModule } from './app/module';
+import { Module } from '@nestjs/common'
+import { ConfigModule, ConfigService } from '@nestjs/config'
+import { PrismaModule } from 'nestjs-prisma'
+import { MyAppModule } from './app/module'
 
 @Module({
   imports: [
@@ -21,7 +21,7 @@ import { MyAppModule } from './app/module';
             },
           },
           explicitConnect: configService.get('explicit'),
-        };
+        }
       },
       inject: [ConfigService],
     }),

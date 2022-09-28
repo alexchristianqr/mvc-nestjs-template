@@ -1,4 +1,4 @@
-import { Model } from 'mongoose';
+import { Model } from 'mongoose'
 
 type myschema = {
   model: Model<any>
@@ -19,41 +19,35 @@ type myschema = {
  * @param sort
  * @returns {Promise<*>}
  */
-export const getModel = async ({
-                                 model,
-                                 modelQuery,
-                                 paginate,
-                                 joins,
-                                 fields,
-                                 sort,
-                               }: myschema): Promise<any> => {
-  console.log('[HelperService.getModel]');
+export const getModel = async ({ model, modelQuery, paginate, joins, fields, sort }: myschema): Promise<any> => {
+  console.log('[HelperService.getModel]')
 
-  let result;
+  let result
 
   // Modelo con pagina
   if (paginate) {
     // Set
-    const perPage = parseInt(paginate.perPage);
-    const page = parseInt(paginate.page);
+    const perPage = parseInt(paginate.perPage)
+    const page = parseInt(paginate.page)
 
-    let sortQuery;
+    let sortQuery
     if (sort) {
-      sortQuery = sort;
+      sortQuery = sort
     } else {
-      sortQuery = { _id: -1 };
+      sortQuery = { _id: -1 }
     }
 
     // Paginar colección
-    const dataModel = await model.find(modelQuery).
-      select(fields).
-      populate(joins).
-      sort(sortQuery).
-      limit(perPage).
-      skip((page - 1) * perPage);
+    const dataModel = await model
+      .find(modelQuery)
+      .select(fields)
+      .populate(joins)
+      .sort(sortQuery)
+      .limit(perPage)
+      .skip((page - 1) * perPage)
 
     // Total
-    const totalModel = await model.find(modelQuery).countDocuments();
+    const totalModel = await model.find(modelQuery).countDocuments()
 
     // Set variables de paginación
     result = {
@@ -61,28 +55,28 @@ export const getModel = async ({
       perPage: perPage,
       to: (() => {
         const firstItem = () => {
-          return totalModel > 0 ? (page - 1) * perPage : null;
-        };
-        return totalModel > 0 ? firstItem() + Math.round(page / perPage) : null;
+          return totalModel > 0 ? (page - 1) * perPage : null
+        }
+        return totalModel > 0 ? firstItem() + Math.round(page / perPage) : null
       })(),
       total: totalModel,
       from: (() => {
         const firstItem = () => {
-          return totalModel > 0 ? (page - 1) * perPage : null;
-        };
+          return totalModel > 0 ? (page - 1) * perPage : null
+        }
         const lastItem = () => {
-          return totalModel > 0 ? firstItem() + 1 : null;
-        };
-        return totalModel > 0 ? lastItem() : null;
+          return totalModel > 0 ? firstItem() + 1 : null
+        }
+        return totalModel > 0 ? lastItem() : null
       })(),
-    };
+    }
   }
   // Modelo sin pagina
   else {
     // Set
-    result = await model.find(modelQuery).sort({ _id: -1 });
+    result = await model.find(modelQuery).sort({ _id: -1 })
   }
 
   // Response
-  return result;
-};
+  return result
+}
