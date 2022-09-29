@@ -1,18 +1,15 @@
+import { Model } from 'mongoose'
 import { Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
-import { Model } from 'mongoose'
-import { ExampleInterface } from './example.interface'
+import { Example, ExampleDocument } from './example.model'
+import { CreateExampleDto, UpdateExampleDto } from './example.dto'
 
 @Injectable()
 export class ExampleService {
-  private readonly exampleModel
+  constructor(@InjectModel(Example.name) private example: Model<ExampleDocument>) {}
 
-  constructor(@InjectModel('Example') exampleModel: Model<ExampleInterface>) {
-    this.exampleModel = exampleModel
-  }
-
-  getExamples() {
-    const result: object = { users: [] }
+  async getExamples() {
+    const result: object = this.example.find()
 
     // Response
     return {
@@ -21,7 +18,7 @@ export class ExampleService {
     }
   }
 
-  getExampleById(userId: string) {
+  async getExampleById(userId: string) {
     const result: object = { userId: 1 }
 
     // Response
@@ -31,7 +28,7 @@ export class ExampleService {
     }
   }
 
-  async createExample(payload: object): Promise<any> {
+  async createExample(payload: CreateExampleDto): Promise<any> {
     const result: object = { created: true }
 
     // Response
@@ -41,7 +38,7 @@ export class ExampleService {
     }
   }
 
-  async updateExample(exampleId: string, payload: object): Promise<any> {
+  async updateExample(exampleId: string, payload: UpdateExampleDto): Promise<any> {
     const result: object = { updated: true }
 
     // Response

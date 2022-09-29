@@ -1,12 +1,8 @@
-# `/tests`
-
-example.service.spec.ts
-
-```typescript
 import { TestingModule } from '@nestjs/testing'
-import { ExampleSchema } from './example.schema'
+import { Example, ExampleSchema } from './example.model'
 import { ExampleService } from './example.service'
-import { testUtil } from './test.util'
+import { testUtil } from '../../common/utils/test.util'
+import { CreateExampleDto, UpdateExampleDto } from './example.dto'
 
 describe('ExampleService', () => {
   // Set
@@ -14,7 +10,7 @@ describe('ExampleService', () => {
   let app: TestingModule
 
   beforeAll(async () => {
-    app = await testUtil([ExampleService], [{ name: 'ExampleSchema', schema: ExampleSchema }])
+    app = await testUtil([ExampleService], [{ name: Example.name, schema: ExampleSchema }])
     exampleService = app.get<ExampleService>(ExampleService)
   })
 
@@ -30,7 +26,7 @@ describe('ExampleService', () => {
       }
 
       // Service
-      const response = await exampleService.getExamples(payload)
+      const response = await exampleService.getExamples()
 
       // Tests
       expect(response.message).toEqual(expect.any(String))
@@ -39,9 +35,8 @@ describe('ExampleService', () => {
 
     it('createExample', async () => {
       // Request
-      let payload: object = {
-        title: 'Title #1',
-        description: 'single description',
+      const payload: CreateExampleDto = {
+        name: 'Title #1',
       }
 
       // Service
@@ -64,9 +59,8 @@ describe('ExampleService', () => {
 
     it('updateExample', async () => {
       // Request
-      let payload: object = {
-        title: 'Title #5',
-        description: 'single description',
+      const payload: UpdateExampleDto = {
+        name: 'Title #5',
       }
 
       // Service
@@ -91,4 +85,3 @@ describe('ExampleService', () => {
     await app.close()
   })
 })
-```
