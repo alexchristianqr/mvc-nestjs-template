@@ -1,11 +1,11 @@
 # Estructura
 
 - **NestJS**
-    - example.module
-    - example.service
-    - example.dto
-    - example.model
-    - example.service.spec
+  - example.model
+  - example.module
+  - example.service
+  - example.service.spec
 - **GraphQL**
-    - example.entity
-    - example.resolver 
+  - example.dto
+  - example.entity
+  - example.resolver
