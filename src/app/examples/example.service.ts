@@ -1,17 +1,21 @@
 import { Injectable } from '@nestjs/common'
-import { Example, ExampleDocument, ExampleSchema } from './example.schema'
 import { InjectModel } from '@nestjs/mongoose'
+import { ExampleDocument } from './example.schema'
 import { Model } from 'mongoose'
-import { ExampleEntity } from './example.entity'
 
 @Injectable()
 export class ExampleService {
-  constructor(@InjectModel(Example.name) private Example: Model<ExampleDocument>) {}
+  constructor(@InjectModel('Example') private Example: Model<ExampleDocument>) {}
 
   async getExamples(): Promise<any> {
     // const result: object = { users: [] }
     // const result: object = this.Example.find({})
     return this.Example.find({})
+    // return this.Example.create({
+    //   name: 'Alex',
+    //   email: 'alex.quispe@gmail.com',
+    //   age: '24',
+    // })
 
     // Response
     // return {
@@ -20,7 +24,7 @@ export class ExampleService {
     // }
   }
 
-  getExampleById(userId: string) {
+  async getExampleById(userId: string) {
     const result: object = { userId: 1 }
 
     // Response
