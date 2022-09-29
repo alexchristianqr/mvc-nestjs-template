@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
-import { Example } from './example.schema'
 import { Model } from 'mongoose'
+import { Example } from './example.model'
 import { CreateExampleDto, UpdateExampleDto } from './example.dto'
 
 @Injectable()

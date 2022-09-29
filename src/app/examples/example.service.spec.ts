@@ -1,5 +1,5 @@
 import { TestingModule } from '@nestjs/testing'
-import { ExampleSchema } from './example.schema'
+import { Example, ExampleSchema } from './example.model'
 import { ExampleService } from './example.service'
 import { testUtil } from '../../common/utils/test.util'
 import { CreateExampleDto } from './dto/create-example.dto'
@@ -11,7 +11,7 @@ describe('ExampleService', () => {
   let app: TestingModule
 
   beforeAll(async () => {
-    app = await testUtil([ExampleService], [{ name: 'Example', schema: ExampleSchema }])
+    app = await testUtil([ExampleService], [{ name: Example.name, schema: ExampleSchema }])
     exampleService = app.get<ExampleService>(ExampleService)
   })
 

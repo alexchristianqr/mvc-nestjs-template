@@ -1,4 +1,3 @@
-import { Document } from 'mongoose'
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 
 @Schema({
@@ -12,5 +11,4 @@ export class Example {
   name: string
 }
 
-export type ExampleDocument = Example & Document
 export const ExampleSchema = SchemaFactory.createForClass(Example)
