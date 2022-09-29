@@ -1,12 +1,9 @@
-# `/tests`
-
-example.service.spec.ts
-
-```typescript
 import { TestingModule } from '@nestjs/testing'
 import { ExampleSchema } from './example.schema'
 import { ExampleService } from './example.service'
-import { testUtil } from './test.util'
+import { testUtil } from '../../common/utils/test.util'
+import { CreateExampleDto } from './dto/create-example.dto'
+import { UpdateExampleDto } from './dto/update-example.dto'
 
 describe('ExampleService', () => {
   // Set
@@ -14,7 +11,7 @@ describe('ExampleService', () => {
   let app: TestingModule
 
   beforeAll(async () => {
-    app = await testUtil([ExampleService], [{ name: 'ExampleSchema', schema: ExampleSchema }])
+    app = await testUtil([ExampleService], [{ name: 'Example', schema: ExampleSchema }])
     exampleService = app.get<ExampleService>(ExampleService)
   })
 
@@ -23,67 +20,59 @@ describe('ExampleService', () => {
     let exampleId: string = null
 
     it('getExamples', async () => {
-      // Request
-      const payload: object = {
-        page: 1,
-        perPage: 10,
-      }
-
       // Service
-      const response = await exampleService.getExamples(payload)
+      const response = await exampleService.getExamples()
+      console.log({ response })
 
       // Tests
-      expect(response.message).toEqual(expect.any(String))
-      expect(response.result).toEqual(expect.any(Array))
+      expect(response).toEqual(expect.any(Object))
     })
 
     it('createExample', async () => {
       // Request
-      let payload: object = {
-        title: 'Title #1',
-        description: 'single description',
+      const payload: CreateExampleDto = {
+        name: 'Title #1',
       }
 
       // Service
       const response = await exampleService.createExample(payload)
-      exampleId = response.result._id
+      exampleId = response._id
 
       // Tests
-      expect(response.message).toEqual(expect.any(String))
-      expect(response.result).toEqual(expect.any(Object))
+      expect(response).toEqual(expect.any(Object))
     })
 
     it('getExampleById', async () => {
       // Service
       const response = await exampleService.getExampleById(exampleId)
+      console.log({ response })
 
       // Tests
-      expect(response.message).toEqual(expect.any(String))
-      expect(response.result).toEqual(expect.any(Object))
+      expect(response).toEqual(expect.any(Object))
     })
 
     it('updateExample', async () => {
       // Request
-      let payload: object = {
-        title: 'Title #5',
-        description: 'single description',
+      const payload: UpdateExampleDto = {
+        _id: exampleId,
+        name: 'Title #5',
       }
 
       // Service
       const response = await exampleService.updateExample(exampleId, payload)
+      console.log({ response })
 
       // Tests
-      expect(response.message).toEqual(expect.any(String))
-      expect(response.result).toEqual(expect.any(Object))
+      expect(response).toEqual(expect.any(Object))
     })
 
     it('deleteExample', async () => {
       // Service
       const response = await exampleService.deleteExample(exampleId)
+      console.log({ response })
 
       // Tests
-      expect(response.message).toEqual(expect.any(String))
-      expect(response.result).toEqual(expect.any(Object))
+      expect(response).toEqual(expect.any(Object))
     })
   })
 
@@ -91,4 +80,3 @@ describe('ExampleService', () => {
     await app.close()
   })
 })
-```

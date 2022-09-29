@@ -4,7 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose'
 
 export const testUtil = (providers: Array<any>, schemas: Array<{ name; schema }>): Promise<any> => {
   return Test.createTestingModule({
-    imports: [ConfigModule.forRoot(), MongooseModule.forRoot(process.env.DB_MONGODB_CONNECTION), MongooseModule.forFeature(schemas)],
+    imports: [ConfigModule.forRoot(), MongooseModule.forRoot(process.env.DB_CONNECTION), MongooseModule.forFeature(schemas)],
     providers,
   }).compile()
 }
