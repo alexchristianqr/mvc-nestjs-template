@@ -10,12 +10,10 @@ export class ExampleService {
   async getExamples(): Promise<any> {
     // const result: object = { users: [] }
     // const result: object = this.Example.find({})
+    await this.Example.create({
+      name: 'Alex',
+    })
     return this.Example.find({})
-    // return this.Example.create({
-    //   name: 'Alex',
-    //   email: 'alex.quispe@gmail.com',
-    //   age: '24',
-    // })
 
     // Response
     // return {

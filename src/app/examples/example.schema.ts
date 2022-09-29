@@ -10,8 +10,6 @@ export type ExampleDocument = Example & Document
 })
 export class Example {
   name: string
-  email: string
-  age: string
 }
 
 export const ExampleSchema = SchemaFactory.createForClass(Example)
