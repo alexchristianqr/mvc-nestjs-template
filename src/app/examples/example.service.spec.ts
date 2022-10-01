@@ -1,7 +1,7 @@
 import { TestingModule } from '@nestjs/testing'
 import { Example, ExampleSchema } from './example.model'
 import { ExampleService } from './example.service'
-import { testUtil } from '../../common/utils/test.util'
+import { testUtil } from '../common/utils/test.util'
 import { CreateExampleDto, UpdateExampleDto } from './example.dto'
 
 describe('ExampleService', () => {

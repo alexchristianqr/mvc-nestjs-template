@@ -1,5 +1,5 @@
 import { Controller, Delete, Get, Post, Put, Req, Res } from '@nestjs/common'
-import { sendResponse } from '../../common/utils/response.util'
+import { sendResponse } from '../common/utils/response.util'
 import { Request, Response } from 'express'
 import { ExampleService } from './example.service'
 
