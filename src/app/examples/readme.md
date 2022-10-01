@@ -48,7 +48,7 @@ An interceptor is a class annotated with the @Injectable() decorator and impleme
 
 [![](images/interceptor.png)](https://docs.nestjs.com/interceptors)
 
-## [Exception filters](https://docs.nestjs.com/interceptors)
+## [Exception filters](https://docs.nestjs.com/exception-filters)
 
 Nest comes with a built-in exceptions layer which is responsible for processing all unhandled exceptions across an
 application. When an exception is not handled by your application code, it is caught by this layer, which then
