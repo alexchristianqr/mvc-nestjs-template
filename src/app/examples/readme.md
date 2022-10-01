@@ -1,4 +1,4 @@
-# Estructura de NestJS
+# Estructura de NestJS + MongoDB
 
 * example.dto
 * example.model
