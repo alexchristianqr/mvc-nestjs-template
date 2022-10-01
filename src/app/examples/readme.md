@@ -1,14 +1,12 @@
-# Estructura de un modulo
+# Estructura de NestJS + GraphQL
 
-- **NestJS**
-    - example.model
-    - example.module
-    - example.service
-    - example.service.spec
-- **GraphQL**
-    - example.dto
-    - example.entity
-    - example.resolver
+* example.model
+* example.module
+* example.service
+* example.service.spec
+* example.dto
+* example.entity
+* example.resolver
 
 ## [Module](https://docs.nestjs.com/module)
 
