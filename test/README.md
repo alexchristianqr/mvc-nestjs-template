@@ -3,14 +3,14 @@
 app.e2e-spec.ts
 
 ```typescript
-import { Test, TestingModule } from '@nestjs/testing';
-import { INestApplication } from '@nestjs/common';
-import * as supertest from 'supertest';
-import { AppModule } from '../src/app.module';
+import { Test, TestingModule } from "@nestjs/testing";
+import { INestApplication } from "@nestjs/common";
+import * as supertest from "supertest";
+import { AppModule } from "../src/app.module";
 
-const baseUrl = '/examples';
+const baseUrl = "/examples";
 
-describe('ExampleController (e2e)', () => {
+describe("ExampleController (e2e)", () => {
   // Set
   let app: INestApplication;
   let exampleId: string;
@@ -25,7 +25,7 @@ describe('ExampleController (e2e)', () => {
     await app.init();
   });
 
-  it('/examples (GET)', async () => {
+  it("/examples (GET)", async () => {
     // Request
     const url: string = `${baseUrl}`;
 
@@ -42,7 +42,7 @@ describe('ExampleController (e2e)', () => {
     expect(response.body.result).toEqual(expect.any(Array));
   });
 
-  it('/examples (POST)', async () => {
+  it("/examples (POST)", async () => {
     // Request
     const url: string = `${baseUrl}`;
 
@@ -60,7 +60,7 @@ describe('ExampleController (e2e)', () => {
     exampleId = response.body.result._id;
   });
 
-  it('/examples (PUT)', async () => {
+  it("/examples (PUT)", async () => {
     // Request
     const url: string = `${baseUrl}/${exampleId}`;
     const payload: object = {};
@@ -78,7 +78,7 @@ describe('ExampleController (e2e)', () => {
     expect(response.body.result).toEqual(expect.any(Object));
   });
 
-  it('/examples (DELETE)', async () => {
+  it("/examples (DELETE)", async () => {
     // Request
     const url: string = `${baseUrl}/${exampleId}`;
 
