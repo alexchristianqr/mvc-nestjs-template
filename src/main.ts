@@ -1,5 +1,6 @@
 import { NestFactory } from '@nestjs/core'
 import { AppModule } from './app.module'
+import { PrismaService } from 'nestjs-prisma'
 
 // import { PrismaService } from './connections/prisma.service';
 
@@ -7,6 +8,10 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule)
   app.setGlobalPrefix(process.env.NODE_APP_PREFIX)
   // await app.init();
+
+  // enable shutdown hook
+  const prismaService: PrismaService = app.get(PrismaService)
+  await prismaService.enableShutdownHooks(app)
 
   // Controlar a prisma con NestJS
   // const prismaService: PrismaService = app.get(PrismaService);

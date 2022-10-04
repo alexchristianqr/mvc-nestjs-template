@@ -1,15 +1,11 @@
 import { Controller, Delete, Get, Post, Put, Req, Res } from '@nestjs/common'
+import { sendResponse } from '../common/utils/response.util'
 import { Request, Response } from 'express'
 import { ExampleService } from './example.service'
-import { sendResponse } from '../../common/utils/response.util'
 
 @Controller('examples')
 export class ExampleController {
-  private readonly exampleService
-
-  constructor(exampleService: ExampleService) {
-    this.exampleService = exampleService
-  }
+  constructor(private readonly exampleService: ExampleService) {}
 
   @Get()
   async getExamples(@Req() req: Request, @Res() res: Response): Promise<any> {
@@ -52,7 +48,7 @@ export class ExampleController {
     const method = '[ExampleController.createExample]'
     try {
       // Request
-      const payload: object = req.body
+      const payload = req.body
 
       // Service
       const response: object = await this.exampleService.createExample(payload)
@@ -70,7 +66,7 @@ export class ExampleController {
     try {
       // Request
       const exampleId: string = req.params.id
-      const payload: object = req.body
+      const payload = req.body
 
       // Service
       const response: object = await this.exampleService.updateExample(exampleId, payload)

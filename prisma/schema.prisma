@@ -1,5 +1,5 @@
 datasource db {
-  provider = "mysql"
+  provider = "sqlite"
   url = env("DATABASE_URL")
 }
 
@@ -8,9 +8,8 @@ generator client {
   provider = "prisma-client-js"
 }
 
-// Data model Users
-model User {
+// Data model example
+model Example {
   id Int @id @default(autoincrement())
   name String?
-  email String @unique
 }

@@ -1,12 +1,13 @@
 import { Injectable } from '@nestjs/common'
-import { PrismaService } from 'nestjs-prisma'
+import { CreateExampleDto, UpdateExampleDto } from './example.dto'
+import { PrismaService } from '../common/config/prisma.service'
 
 @Injectable()
 export class ExampleService {
   constructor(private prisma: PrismaService) {}
 
-  getExamples() {
-    const result: object = { users: [] }
+  async getExamples() {
+    const result: object = this.prisma.user.findMany()
 
     // Response
     return {
@@ -15,8 +16,8 @@ export class ExampleService {
     }
   }
 
-  getExampleById(userId: string) {
-    const result: object = { userId: 1 }
+  async getExampleById(exampleId: string) {
+    const result: object = { exampleId }
 
     // Response
     return {
@@ -25,8 +26,8 @@ export class ExampleService {
     }
   }
 
-  async createExample(payload: object): Promise<any> {
-    const result: object = { created: true }
+  async createExample(payload: CreateExampleDto): Promise<any> {
+    const result: object = { payload }
 
     // Response
     return {
@@ -35,8 +36,8 @@ export class ExampleService {
     }
   }
 
-  async updateExample(exampleId: string, payload: object): Promise<any> {
-    const result: object = { updated: true }
+  async updateExample(exampleId: string, payload: UpdateExampleDto): Promise<any> {
+    const result: object = { exampleId, payload }
 
     // Response
     return {
@@ -46,7 +47,7 @@ export class ExampleService {
   }
 
   async deleteExample(exampleId: string): Promise<any> {
-    const result: object = { deleted: true }
+    const result: object = { exampleId }
 
     // Response
     return {
