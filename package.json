@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:acqrdeveloper/mvc-nestjs-template.git"
+    "url": "git@github.com:alexchristianqr/mvc-nestjs-template.git"
   },
   "private": true,
   "license": "MIT",
