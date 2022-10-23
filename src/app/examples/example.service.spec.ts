@@ -26,7 +26,7 @@ describe('ExampleService', () => {
     // Service
     const response = await exampleService.getExamples()
 
-    // Tests
+    // Unit Test
     expect(response.message).toEqual(expect.any(String))
     expect(response.result).toEqual(expect.any(Array))
   })
@@ -50,7 +50,7 @@ describe('ExampleService', () => {
     // Service
     const response = await exampleService.getExampleById(exampleId)
 
-    // Tests
+    // Unit Test
     expect(response.message).toEqual(expect.any(String))
     expect(response.result).toEqual(expect.any(Object))
   })
@@ -64,7 +64,7 @@ describe('ExampleService', () => {
     // Service
     const response = await exampleService.updateExample(exampleId, payload)
 
-    // Tests
+    // Unit Test
     expect(response.message).toEqual(expect.any(String))
     expect(response.result).toEqual(expect.any(Object))
   })
@@ -73,7 +73,7 @@ describe('ExampleService', () => {
     // Service
     const response = await exampleService.deleteExample(exampleId)
 
-    // Tests
+    // Unit Test
     expect(response.message).toEqual(expect.any(String))
     expect(response.result).toEqual(expect.any(Object))
   })
