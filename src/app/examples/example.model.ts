@@ -10,7 +10,7 @@ export type ExampleDocument = Example & Document
 export class Example {
   _id
   @Prop()
-  name: string
+    name: string
 }
 
 export const ExampleSchema = SchemaFactory.createForClass(Example)

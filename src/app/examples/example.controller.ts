@@ -5,10 +5,10 @@ import { ExampleService } from './example.service'
 
 @Controller('examples')
 export class ExampleController {
-  constructor(private readonly exampleService: ExampleService) {}
+  constructor (private readonly exampleService: ExampleService) {}
 
   @Get()
-  async getExamples(@Req() req: Request, @Res() res: Response): Promise<any> {
+  async getExamples (@Req() req: Request, @Res() res: Response): Promise<any> {
     const method = '[ExampleController.getExamples]'
     try {
       // Request
@@ -27,14 +27,16 @@ export class ExampleController {
   }
 
   @Get(':id')
-  async getExampleById(@Req() req: Request, @Res() res: Response): Promise<any> {
+  async getExampleById (
+    @Req() req: Request, @Res() res: Response): Promise<any> {
     const method = '[ExampleController.getExampleById]'
     try {
       // Request
       const exampleId: string = req.params.id
 
       // Service
-      const response: object = await this.exampleService.getExampleById(exampleId)
+      const response: object = await this.exampleService.getExampleById(
+        exampleId)
 
       // Response
       return sendResponse(req, res, { method, ...response })
@@ -44,7 +46,8 @@ export class ExampleController {
   }
 
   @Post()
-  async createExample(@Req() req: Request, @Res() res: Response): Promise<any> {
+  async createExample (
+    @Req() req: Request, @Res() res: Response): Promise<any> {
     const method = '[ExampleController.createExample]'
     try {
       // Request
@@ -61,7 +64,8 @@ export class ExampleController {
   }
 
   @Put(':id')
-  async updateExample(@Req() req: Request, @Res() res: Response): Promise<any> {
+  async updateExample (
+    @Req() req: Request, @Res() res: Response): Promise<any> {
     const method = '[ExampleController.updateExample]'
     try {
       // Request
@@ -69,7 +73,8 @@ export class ExampleController {
       const payload = req.body
 
       // Service
-      const response: object = await this.exampleService.updateExample(exampleId, payload)
+      const response: object = await this.exampleService.updateExample(
+        exampleId, payload)
 
       // Response
       return sendResponse(req, res, { method, ...response })
@@ -79,14 +84,16 @@ export class ExampleController {
   }
 
   @Delete(':id')
-  async deleteExample(@Req() req: Request, @Res() res: Response): Promise<any> {
+  async deleteExample (
+    @Req() req: Request, @Res() res: Response): Promise<any> {
     const method = '[ExampleController.deleteExample]'
     try {
       // Request
       const exampleId: string = req.params.id
 
       // Service
-      const response: object = await this.exampleService.deleteExample(exampleId)
+      const response: object = await this.exampleService.deleteExample(
+        exampleId)
 
       // Response
       return sendResponse(req, res, { method, ...response })

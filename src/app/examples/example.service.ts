@@ -6,10 +6,12 @@ import { CreateExampleDto, UpdateExampleDto } from './example.dto'
 
 @Injectable()
 export class ExampleService {
-  constructor(@InjectModel(Example.name) private example: Model<ExampleDocument>) {}
+  constructor (@InjectModel(
+    Example.name) private example: Model<ExampleDocument>) {}
 
-  async getExamples() {
-    const result: object = this.example.find()
+  async getExamples () {
+    // const result: object = this.example.find({})
+    const result = [{ name: 'Alex' }]
 
     // Response
     return {
@@ -18,7 +20,7 @@ export class ExampleService {
     }
   }
 
-  async getExampleById(userId: string) {
+  async getExampleById (userId: string) {
     const result: object = { userId: 1 }
 
     // Response
@@ -28,7 +30,7 @@ export class ExampleService {
     }
   }
 
-  async createExample(payload: CreateExampleDto): Promise<any> {
+  async createExample (payload: CreateExampleDto): Promise<any> {
     const result: object = { created: true }
 
     // Response
@@ -38,7 +40,8 @@ export class ExampleService {
     }
   }
 
-  async updateExample(exampleId: string, payload: UpdateExampleDto): Promise<any> {
+  async updateExample (
+    exampleId: string, payload: UpdateExampleDto): Promise<any> {
     const result: object = { updated: true }
 
     // Response
@@ -48,7 +51,7 @@ export class ExampleService {
     }
   }
 
-  async deleteExample(exampleId: string): Promise<any> {
+  async deleteExample (exampleId: string): Promise<any> {
     const result: object = { deleted: true }
 
     // Response

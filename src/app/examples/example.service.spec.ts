@@ -8,77 +8,74 @@ describe('ExampleService', () => {
   // Set
   let exampleService: ExampleService
   let app: TestingModule
+  let exampleId: string = null
 
   beforeAll(async () => {
-    app = await testUtil([ExampleService], [{ name: Example.name, schema: ExampleSchema }])
+    app = await testUtil([ExampleService],
+      [{ name: Example.name, schema: ExampleSchema }])
     exampleService = app.get<ExampleService>(ExampleService)
   })
 
-  describe('root', () => {
-    // Set
-    let exampleId: string = null
+  it('getExamples', async () => {
+    // Request
+    const payload: object = {
+      page: 1,
+      perPage: 10,
+    }
 
-    it('getExamples', async () => {
-      // Request
-      const payload: object = {
-        page: 1,
-        perPage: 10,
-      }
+    // Service
+    const response = await exampleService.getExamples()
 
-      // Service
-      const response = await exampleService.getExamples()
+    // Tests
+    expect(response.message).toEqual(expect.any(String))
+    expect(response.result).toEqual(expect.any(Array))
+  })
 
-      // Tests
-      expect(response.message).toEqual(expect.any(String))
-      expect(response.result).toEqual(expect.any(Array))
-    })
+  it('createExample', async () => {
+    // Request
+    const payload: CreateExampleDto = {
+      name: 'Title #1',
+    }
 
-    it('createExample', async () => {
-      // Request
-      const payload: CreateExampleDto = {
-        name: 'Title #1',
-      }
+    // Service
+    const response = await exampleService.createExample(payload)
+    exampleId = response.result._id
 
-      // Service
-      const response = await exampleService.createExample(payload)
-      exampleId = response.result._id
+    // Unit Test
+    expect(response.message).toEqual(expect.any(String))
+    expect(response.result).toEqual(expect.any(Object))
+  })
 
-      // Tests
-      expect(response.message).toEqual(expect.any(String))
-      expect(response.result).toEqual(expect.any(Object))
-    })
+  it('getExampleById', async () => {
+    // Service
+    const response = await exampleService.getExampleById(exampleId)
 
-    it('getExampleById', async () => {
-      // Service
-      const response = await exampleService.getExampleById(exampleId)
+    // Tests
+    expect(response.message).toEqual(expect.any(String))
+    expect(response.result).toEqual(expect.any(Object))
+  })
 
-      // Tests
-      expect(response.message).toEqual(expect.any(String))
-      expect(response.result).toEqual(expect.any(Object))
-    })
+  it('updateExample', async () => {
+    // Request
+    const payload: UpdateExampleDto = {
+      name: 'Title #5',
+    }
 
-    it('updateExample', async () => {
-      // Request
-      const payload: UpdateExampleDto = {
-        name: 'Title #5',
-      }
+    // Service
+    const response = await exampleService.updateExample(exampleId, payload)
 
-      // Service
-      const response = await exampleService.updateExample(exampleId, payload)
+    // Tests
+    expect(response.message).toEqual(expect.any(String))
+    expect(response.result).toEqual(expect.any(Object))
+  })
 
-      // Tests
-      expect(response.message).toEqual(expect.any(String))
-      expect(response.result).toEqual(expect.any(Object))
-    })
+  it('deleteExample', async () => {
+    // Service
+    const response = await exampleService.deleteExample(exampleId)
 
-    it('deleteExample', async () => {
-      // Service
-      const response = await exampleService.deleteExample(exampleId)
-
-      // Tests
-      expect(response.message).toEqual(expect.any(String))
-      expect(response.result).toEqual(expect.any(Object))
-    })
+    // Tests
+    expect(response.message).toEqual(expect.any(String))
+    expect(response.result).toEqual(expect.any(Object))
   })
 
   afterAll(async () => {
