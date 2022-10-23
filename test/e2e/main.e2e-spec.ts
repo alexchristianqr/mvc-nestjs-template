@@ -3,15 +3,7 @@ import { INestApplication } from '@nestjs/common'
 import * as supertest from 'supertest'
 import { AppModule } from '../../src/app.module'
 
-// import app from '../../src/main'
-// import supertest from 'supertest';
-// import { Test, TestingModule } from '@nestjs/testing';
-// import { AppModule } from '../../src/app.module';
-
-// Set
-// const baseUrl = '/examples';
 let app: INestApplication
-// let exampleId: string;
 let request
 
 beforeAll(async () => {
