@@ -16,7 +16,7 @@ describe('ExampleController', () => {
     // API
     const response = await request.get(url)
 
-    // Tests
+    // End-to-end Test
     expect(response.status).toBe(200)
     expect(response.body.code).toEqual(expect.any(Number))
     expect(response.body.success).toEqual(expect.any(Boolean))
@@ -33,7 +33,7 @@ describe('ExampleController', () => {
     // API
     const response = await request.post(url)
 
-    // Tests
+    // End-to-end Test
     expect(response.status).toBe(200)
     expect(response.body.code).toEqual(expect.any(Number))
     expect(response.body.success).toEqual(expect.any(Boolean))
@@ -52,7 +52,7 @@ describe('ExampleController', () => {
     // API
     const response = await request.put(url, payload)
 
-    // Tests
+    // End-to-end Test
     expect(response.status).toBe(200)
     expect(response.body.code).toEqual(expect.any(Number))
     expect(response.body.success).toEqual(expect.any(Boolean))
@@ -69,7 +69,7 @@ describe('ExampleController', () => {
     // API
     const response = await request.delete(url)
 
-    // Tests
+    // End-to-end Test
     expect(response.status).toBe(200)
     expect(response.body.code).toEqual(expect.any(Number))
     expect(response.body.success).toEqual(expect.any(Boolean))
